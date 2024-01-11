@@ -8,11 +8,29 @@ import "oaidl.idl";
 import "ocidl.idl";
 
 [
+	object,
+	uuid(db1653c8-1b97-4c4c-9afd-5faa1437299f),
+	pointer_default(unique)
+]
+interface IInterfaceZ : IUnknown
+{
+	HRESULT MethodX([in] ULONG ulParam1);
+	HRESULT MethodY();
+};
+[
 	uuid(77b9de87-2fee-4160-a014-91a2caeec839),
 	version(1.0),
 ]
 library ATLCOMSampleLib
 {
 	importlib("stdole2.tlb");
+	[
+		uuid(b0716365-8d40-4069-b7ad-25c8e1afbe97)
+	]
+	coclass MySampleClass
+	{
+		[default] interface IInterfaceZ;
+	};
 };
 
+import "shobjidl.idl";

@@ -1,0 +1,25 @@
+HKCR
+{
+	KotaroY-BD-ProgID1.1 = s 'MySampleClass class'
+	{
+		CLSID = s '{b0716365-8d40-4069-b7ad-25c8e1afbe97}'
+	}
+	KotaroY-BD-ProgID1 = s 'MySampleClass class'
+	{		
+		CurVer = s 'KotaroY-BD-ProgID1.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {b0716365-8d40-4069-b7ad-25c8e1afbe97} = s 'MySampleClass class'
+		{
+			ProgID = s 'KotaroY-BD-ProgID1.1'
+			VersionIndependentProgID = s 'KotaroY-BD-ProgID1'
+			LocalServer32 = s '%MODULE%'
+			{
+				val ServerExecutable = s '%MODULE_RAW%'
+			}
+			TypeLib = s '{77b9de87-2fee-4160-a014-91a2caeec839}'
+			Version = s '1.0'
+		}
+	}
+}

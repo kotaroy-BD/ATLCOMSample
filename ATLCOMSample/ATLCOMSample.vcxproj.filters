@@ -34,6 +34,9 @@
     <ClInclude Include="pch.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="MySampleClass.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ATLCOMSample.cpp">
@@ -45,6 +48,9 @@
     <ClCompile Include="pch.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="MySampleClass.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ATLCOMSample.rc">
@@ -53,6 +59,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ATLCOMSample.rgs">
+      <Filter>リソース ファイル</Filter>
+    </None>
+    <None Include="MySampleClass.rgs">
       <Filter>リソース ファイル</Filter>
     </None>
   </ItemGroup>
