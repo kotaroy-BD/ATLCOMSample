@@ -1,0 +1,18 @@
+﻿// ATLCOMSample.idl : ATLCOMSample の IDL ソース
+//
+
+// このファイルは、タイプ ライブラリ ([!output SAFE_IDL_NAME].tlb) およびマーシャリング コードを
+// タイプ ライブラリ (ATLCOMSample.tlb) とマーシャリング コードを生成します。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(77b9de87-2fee-4160-a014-91a2caeec839),
+	version(1.0),
+]
+library ATLCOMSampleLib
+{
+	importlib("stdole2.tlb");
+};
+

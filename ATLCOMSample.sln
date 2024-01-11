@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ATLCOMSample", "ATLCOMSample\ATLCOMSample.vcxproj", "{981838E1-66FD-49CF-A55F-B20018773897}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ATLCOMSamplePS", "ATLCOMSamplePS\ATLCOMSamplePS.vcxproj", "{9338C922-A9BC-421C-A57B-88D9AC4A6230}"
+	ProjectSection(ProjectDependencies) = postProject
+		{981838E1-66FD-49CF-A55F-B20018773897} = {981838E1-66FD-49CF-A55F-B20018773897}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{981838E1-66FD-49CF-A55F-B20018773897}.Debug|x64.ActiveCfg = Debug|x64
+		{981838E1-66FD-49CF-A55F-B20018773897}.Debug|x64.Build.0 = Debug|x64
+		{981838E1-66FD-49CF-A55F-B20018773897}.Debug|x86.ActiveCfg = Debug|Win32
+		{981838E1-66FD-49CF-A55F-B20018773897}.Debug|x86.Build.0 = Debug|Win32
+		{981838E1-66FD-49CF-A55F-B20018773897}.Release|x64.ActiveCfg = Release|x64
+		{981838E1-66FD-49CF-A55F-B20018773897}.Release|x64.Build.0 = Release|x64
+		{981838E1-66FD-49CF-A55F-B20018773897}.Release|x86.ActiveCfg = Release|Win32
+		{981838E1-66FD-49CF-A55F-B20018773897}.Release|x86.Build.0 = Release|Win32
+		{9338C922-A9BC-421C-A57B-88D9AC4A6230}.Debug|x64.ActiveCfg = Debug|x64
+		{9338C922-A9BC-421C-A57B-88D9AC4A6230}.Debug|x86.ActiveCfg = Debug|Win32
+		{9338C922-A9BC-421C-A57B-88D9AC4A6230}.Release|x64.ActiveCfg = Release|x64
+		{9338C922-A9BC-421C-A57B-88D9AC4A6230}.Release|x86.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9864BE0-A45A-48A8-9A5E-FB4B9FEB39C0}
+	EndGlobalSection
+EndGlobal
