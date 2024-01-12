@@ -28,13 +28,14 @@ int main()
         {
             std::cout << "Interface method call failed.\n";
         }
+
+        pIInterfaceZ->Release();
     }
     else
     {
         std::cout << "CoCreateInstance failed.\n";
     }
 
-    pIInterfaceZ->Release();
 
     CoUninitialize();
 }
