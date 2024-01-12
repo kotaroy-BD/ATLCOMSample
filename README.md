@@ -32,7 +32,7 @@ This message box is implemented in the COM class hosted in `ATLCOMSample.exe`, n
 - If you take a closer look of the processes using [ProcessExplorer](https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer), you'll find that `ATLCOMSample.exe` is ***not*** child process of `client.exe`. `ATLCOMSample.exe` is spawned by COM runtime.
 
 # How COM registration works
-In a nutshell, COM needs two things registered to the system. `class` and `interface`. All classes and interfaces have different unique IDs, which is GUID, called `CLSID` (class ID) and `IID` (interface ID) respectively. Both `CLSIDs` and `IIDs` are registered in the registry hive. `CLSID` is used to locale the module (EXE or DLL) that implements the corresponding COM class. `IID` is used to give information to COM runtime about the interface and to locate the module (DLL) that implements proxy/stub for the interface. Proxy/stub are necessary when making a cross-apartment call (including cross-process call). By using Proxy/stub, COM packages and unpackages method parameters and returned data to transmit across the apartment boundary, called marshalling.  
+In a nutshell, COM needs two things registered to the system. `class` and `interface`. All classes and interfaces have different unique IDs, which is GUID, called `CLSID` (class ID) and `IID` (interface ID) respectively. Both `CLSIDs` and `IIDs` are registered in the registry hive. `CLSID` is used to locale the module (EXE or DLL) that implements the corresponding COM class. `IID` is used to give information to COM runtime about the interface and to locate the module (DLL) that implements proxy/stub for the interface. Proxy/stub are necessary when making a cross-apartment call (including cross-process call). By using Proxy/stub, COM packages and unpackages method parameters and returned data to transmit across the apartment boundary. This packaging/unpackaging is called marshalling.  
 
 In registry you can find the following three blocks:
 - Registration for `CLSID` of the main COM object (`ATLCOMSample`), which locates `ATLCOMSample.exe`
@@ -40,10 +40,10 @@ In registry you can find the following three blocks:
 - Registration for `CLSID` of the proxy/stub object, which shares the same ID as its `IID`, which locates `ATLCOMSamplePS.exe`
 
 ![CLSID registration for ATLCOMSample](doc/CLSID1-reg.png)
-![CLSID registration for proxy/stub](doc/CLSID2-reg.png)
 ![IID registration](doc/IID-reg.png)
+![CLSID registration for proxy/stub](doc/CLSID2-reg.png)
 
-When client of COM server (example in `client.exe`), it calls `CoCreateInstance` API, passing COM class's CLSID and an IID that identifies one of interfaces known that it's implemented in the COM class. COM runtime looks into the registry to find the CLSID to localte the module path (EXE or DLL) that implements the COM class, loads the module (in to the caller's process space if the COM class is implemented in DLL, or launch a new process if the COM class is implemented in EXE), get an interface pointer of specificied interface by IID, and return that interface pointer as the result of API call. Marshalling will happen under the hood in this proces which uses proxy/stub module if necessary.
+When client of COM server (example in `client.exe`) wants to connect to the server, it calls `CoCreateInstance` API, passing COM class's CLSID and an IID that identifies one of interfaces known that it's implemented in the COM class. COM runtime looks into the registry to find the CLSID to localte the module path (EXE or DLL) that implements the COM class, loads the module (in to the caller's process space if the COM class is implemented in DLL, or launch a new process if the COM class is implemented in EXE), get an interface pointer of specificied interface by IID, and return that interface pointer as the result of API call. Marshalling will happen under the hood in this proces which uses proxy/stub module if necessary.
 
 Once client gets the interface pointer, from programmer's perspective it's just a matter of making normal method call against the interface (`pIInterfaceZ->MethodY();`). COM does everything under the hood to make this call reach to server side (even if it resides in another process) and return the result from the COM class as if it's just a normal method call happening on the caller's thread.
 
