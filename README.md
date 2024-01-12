@@ -26,7 +26,7 @@ or
 After build and registration, run client.exe (either on debugger or just kick it from command-prompt). If it successfully works, a message box dialog shows up.  
 ![the message box](doc/messagebox.png)
 
-This message box is implemented the COM class hosted in `ATLCOMSample.exe`, not in `client.exe`. By checking task manager, you'll see that `ATLCOMSample.exe` is running. You also notice:
+This message box is implemented in the COM class hosted in `ATLCOMSample.exe`, not in `client.exe`. By checking task manager, you'll see that `ATLCOMSample.exe` is running. You also notice:
 - This is a blocking call, meaning that until you hit the `OK` button and return from IInterfaceZ::MethodY() in `ATLCOMSample.exe` side, the caller thread in `client.exe` is blocked.
 - Process lifetime of the COM server (`ATLCOMSample.exe`) is managed by COM. As soon as you execute `client.exe`, `ATLCOMSample.exe` is automatically launched, and once `client.exe` ends (to be more accurate, as soon as you call `pIInterfaceZ->Release()`), `ATLCOMSample.exe` is terminated.
 - If you take a closer look of the processes using [ProcessExplorer](https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer), you'll find that `ATLCOMSample.exe` is ***not*** child process of `client.exe`. `ATLCOMSample.exe` is spawned by COM runtime.
